@@ -23,16 +23,16 @@
 
 ## Technologies and software used
 - Ubuntu Server 22.04.3 [Download](https://releases.ubuntu.com/22.04/)
-- Nano [Website](https://www.nano-editor.org/)
-- Nginx [Website](https://nginx.org/)
-- UFW Ubuntu [Documentation](https://help.ubuntu.com/community/UFW)
-- SSH [wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
-- PuTTY [Download](https://www.putty.org/)
-- Certbot for Ubuntu [Website](https://certbot.eff.org/)
-- Docker [Website](https://www.docker.com/)
-- MySQL [Website](https://www.mysql.com/)
-- Gitea 1.21 [Website](https://gitea.com/)
-- Act runner 0.2.5 [Documentation](https://docs.gitea.com/usage/actions/act-runner)
+- Nano                  [Website](https://www.nano-editor.org/)
+- Nginx                 [Website](https://nginx.org/)
+- UFW Ubuntu            [Documentation](https://help.ubuntu.com/community/UFW)
+- SSH                   [wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
+- PuTTY                 [Download](https://www.putty.org/)
+- Certbot for Ubuntu    [Website](https://certbot.eff.org/)
+- Docker                [Website](https://www.docker.com/)
+- MySQL                 [Website](https://www.mysql.com/)
+- Gitea 1.21            [Website](https://gitea.com/)
+- Act runner 0.2.5      [Documentation](https://docs.gitea.com/usage/actions/act-runner)
 
 ## Detailed instructions on how to deploy to VPS/VDS server
 
@@ -96,7 +96,7 @@
   4. You need to exit and save the changes by pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter".
 
   **Next, you need to add SSH to autoloader - this should be done with the command:**  
-  `systemctl enable --now ssh`.
+  `systemctl enable --now ssh`
 
   **Next, you need to create a directory with access keys by executing the command:**  
   `mkdir -p ~/.ssh`.
