@@ -294,13 +294,20 @@
   ```yaml
   # WARNING: Use a complex passwords
   version: '3.1'
+
+  networks:
+    gitea:
+      external: false
+
   services:
-    db_mysql:
-      container_name: gitea_db_mysql
+    gitea_db_mysql:
+      container_name: gitea_db_mysql      
       image: mysql:8
       ports:
         - "3310:3310"
       restart: always
+      networks:
+        - gitea
       environment:
         MYSQL_USER: gitea
         MYSQL_PASSWORD: gitea
@@ -311,14 +318,15 @@
       command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
 
     gitea_init:
-      image: mysql
+      image: mysql:8
       depends_on:
-        - db_mysql
+        - gitea_db_mysql
       environment:
         MYSQL_ROOT_PASSWORD: root
       command: >
-        bash -c "mysql -h db_mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SET old_passwords=0; CREATE DATABASE giteadb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON giteadb.* TO gitea; FLUSH PRIVILEGES;'"
+        bash -c "mysql -h gitea_db_mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SET old_passwords=0; CREATE DATABASE giteadb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON giteadb.* TO gitea; FLUSH PRIVILEGES;'"
   ```  
+
   5. Let's get our container up and running:  
   ```console
   docker-compose up -d
@@ -329,9 +337,77 @@
   docker ps
   ```  
   *I think you'll know where to look :)*  
+
   ***We've prepared a database for Gitea***
 
 ### Step 9: Installing Gitea
+  1. Let's start creating the directory system:  
+  ```console
+  mkdir /home/applications && mkdir /home/applications/gitea && /home/applications/giteadb/volume
+  ```  
+  2. Let's go to the created directory:
+  ```console
+  cd /home/applications/gitea
+  ```  
+  3. Create a docker-compose.yaml file to create and run Gitea in the docker container:  
+  ```console
+  nano docker-compose.yaml
+  ```
+  *Opening in the Nano text editor*  
+
+  4. Let's create a new user:  
+  ```console
+  adduser --system --shell /bin/bash --gecos 'Git Version Control' --group --disabled-password --home /home/gitea gitea
+  ```  
+  *REMEMBER UID and GID*  
+
+  5. A script needs to be created. Here is its code:  
+  ```yaml
+  # Note: USER_UID and USER_GID from previous point
+  # Note: GITEA__database__USER and GITEA__database__PASSWD from Step 8 point 4
+  version: "3.1"
+
+  networks:
+    gitea:
+      external: false
+
+  services:
+    server:
+      image: gitea/gitea:1.21
+      container_name: gitea
+      environment:
+        - USER_UID=109
+        - USER_GID=113
+        - GITEA__database__DB_TYPE=mysql
+        - GITEA__database__HOST=giteadb:3310
+        - GITEA__database__NAME=giteadb
+        - GITEA__database__USER=gitea
+        - GITEA__database__PASSWD=gitea
+      restart: always
+      networks:
+        - gitea
+      volumes:
+        - ./home/applications/giteadb/volume:/data
+        - /var/gitea/.ssh/:/data/gitea/.ssh
+        - /etc/timezone:/etc/timezone:ro
+        - /etc/localtime:/etc/localtime:ro
+      ports:
+        - "3000:3000"
+        - "2222:22"
+      depends_on:
+        - gitea_db_mysql
+  ```  
+
+  5. Let's get our container up and running:  
+  ```console
+  docker-compose up -d
+  ```  
+  
+  6. Let's verify that the container is running:  
+  ```console
+  docker ps
+  ```  
+  *I think you'll know where to look :)*  
 
 ### Step 10: Configuring Nginx
 
