@@ -278,7 +278,7 @@
 
   1. Let's start creating the directory system:  
   ```console
-  mkdir /home/mysql && mkdir /home/mysql/giteadb
+  mkdir /home/mysql && mkdir /home/mysql/giteadb && /home/mysql/giteadb/volume
   ```  
   2. Let's go to the created directory:
   ```console
@@ -307,7 +307,7 @@
         MYSQL_ROOT_PASSWORD: root
         MYSQL_ALLOW_EMPTY_PASSWORD: false
       volumes:
-        - /home/mysql/giteadb:/var/lib/mysql
+        - /home/mysql/giteadb/volume:/var/lib/mysql
       command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
 
     gitea_init:
