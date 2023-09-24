@@ -25,18 +25,20 @@
 - [Gitea Features](#gitea-features)
 
 ## Technologies and software used
-- Ubuntu Server 22.04.3 [Download](https://releases.ubuntu.com/22.04/)
-- Nano                  [Website](https://www.nano-editor.org/)
-- Git                   [Website](https://git-scm.com/)
-- Nginx                 [Website](https://nginx.com/)
-- UFW Ubuntu            [Documentation](https://help.ubuntu.com/community/UFW)
-- SSH                   [wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
-- PuTTY                 [Download](https://www.putty.org/)
-- Certbot for Ubuntu    [Website](https://certbot.eff.org/)
-- Docker                [Website](https://www.docker.com/)
-- MySQL                 [Website](https://www.mysql.com/)
-- Gitea 1.21            [Website](https://gitea.com/)
-- Act runner 0.2.5      [Documentation](https://docs.gitea.com/usage/actions/act-runner)
+| Technologie or software name |     Link      |
+|------------------------------|---------------|
+| Ubuntu Server 22.04.3        |[Download](https://releases.ubuntu.com/22.04/)|
+| Nano                         |[Website](https://www.nano-editor.org/)|
+| Git                          |[Website](https://git-scm.com/)|
+| Nginx                        |[Website](https://nginx.com/)|
+| UFW Ubuntu                   |[Documentation](https://help.ubuntu.com/community/UFW)|
+| SSH                          |[wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)|
+| PuTTY                        |[Download](https://www.putty.org/)|
+| Certbot for Ubuntu           |[Website](https://certbot.eff.org/)|
+| Docker                       |[Website](https://www.docker.com/)|
+| MySQL                        |[Website](https://www.mysql.com/)|
+| Gitea 1.21                   |[Website](https://gitea.com/)|
+| Act runner 0.2.5             |[Documentation](https://docs.gitea.com/usage/actions/act-runner)|
 
 ## Detailed instructions on how to deploy to VPS/VDS server
 
