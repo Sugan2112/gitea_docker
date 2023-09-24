@@ -380,7 +380,7 @@
         - USER_UID=109
         - USER_GID=113
         - GITEA__database__DB_TYPE=mysql
-        - GITEA__database__HOST=giteadb:3310
+        - GITEA__database__HOST=gitea_db_mysql:3310
         - GITEA__database__NAME=giteadb
         - GITEA__database__USER=gitea
         - GITEA__database__PASSWD=gitea
