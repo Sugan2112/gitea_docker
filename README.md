@@ -27,8 +27,9 @@
   - [Step 2: Upgrade packages](#step-2-upgrade-packages)
 
 
-## List of technologies used
+## Technologies and software used
 - Ubuntu Server 22.04.3
+- Nano
 - Nginx
 - UFW Ubuntu
 - SSH
