@@ -45,14 +45,14 @@
 ### Step 0: Preparation
 #### Server rent
   You need to rent a VPS/VDS server and install Ubuntu Server 22.04.3 (preferably the minimalized version).
-Minimum server system requirements:
-- CPU 1x
-- RAM 1024Mb
-- SSD 20Gb
-- Network 100Mb
+  Minimum server system requirements:
+    - CPU 1x
+    - RAM 1024Mb
+    - SSD 20Gb
+    - Network 100Mb
   Usually hosting providers themselves install the operating system and give root access via SSH (We will consider the variant with already installed Ubuntu Server 22.04.3 minimalized + OpenSSH).
-#### SSH key pair creation
-  [Documentation](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
+#### SSH key pair creation 
+  [SSH key pair creation (Documentation)](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
 
 ### Step 1: Connecting to the server
 
