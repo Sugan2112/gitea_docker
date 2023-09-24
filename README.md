@@ -55,8 +55,17 @@
   [SSH key pair creation (Documentation)](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
 
 ### Step 1: Connecting to the server
+#### First connection
+  Let's consider a situation where your hosting provider has given you roor access to the server by login and password.
+  You need to start PuTTY and connect to the server. *It is assumed that you know how to do this and have read it: [instruction](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+  You should see it:
+  `root@your_server_name:~#`
+#### After executing [step 3](#step-3-configuring-ssh-access) of this instruction
+  Access to the server will be possible **only by SSH key**.
 
 ### Step 2: Upgrade packages
+  Commands need to be executed:  
+  `apt update && apt upgrade -y`
 
 ### Step 3: Configuring SSH access
 
