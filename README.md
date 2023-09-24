@@ -58,23 +58,23 @@
 
 #### How to work with the console Ubuntu Server 22.04.3
   - To clear the console:  
-  ```shell 
+  ```console 
   clear
   ```
   - To navigate to a directory:  
-  ```shell
+  ```console
   cd folder
   ```  
   or to navigate from the current folder  
-  ```shell
+  ```console
   cd folder/folder
   ```  
   or to route from the user's root folder  
-  ```shell
+  ```console
   cd /folder/folder
   ```  
   or to route from the server root folder  
-  ```shell
+  ```console
   cd ~/folder/folder
   ```
 
@@ -93,7 +93,7 @@
 
 ### Step 2: Upgrade packages
   Commands need to be executed:  
-  ```shell
+  ```console
   apt update && apt upgrade -y
   ```  
   *This should be done each time before installing packages*
@@ -103,13 +103,13 @@
   *I prefer to use [**Nano**](https://www.nano-editor.org/)*
 
   **Let's install this text editor, run the command:**  
-  ```shell
+  ```console
   apt install nano -y
   ```
 
   **Once *Nano* is installed, we need to configure *OpenSSH*, instruction:**  
   - Run the command  
-  ```shell
+  ```console
   nano /etc/ssh/sshd_config
   ```
 
@@ -120,33 +120,33 @@
   4. You need to exit and save the changes by pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter".
 
   **Next, you need to add SSH to autoloader - this should be done with the command:**  
-  ```shell
+  ```console
   systemctl enable --now ssh
   ```
 
   **Next, you need to create a directory with access keys by executing the command:**  
-  ```shell
+  ```console
   mkdir -p ~/.ssh
   ```
 
   **The next step is to write the public key to a file - this should be done with the command:**  
-  ```shell
+  ```console
   echo your_public_key >> ~/.ssh/authorized_keys
   ```  
   **Example of a key: ssh-rsa AAAAAkkkkatstyasflRlkqksaJJAUSufisafiIISAFI1gGasfah123/asfasFSAfafsqUUv rsa-key-20230924*
 
   **Set permissions on the files in the ./ssh directory:**  
-  ```shell
+  ```console
   chmod -R go= ~/.ssh
   ```
 
   **Change the owner and group for all files and subdirectories in the ./ssh directory to the system user "root" and its group "root":**  
-  ```shell
+  ```console
   chown -R root:root ~/.ssh
   ```
 
   **Restart the SSH service**  
-  ```shell
+  ```console
   service ssh restart
   ```
 
@@ -154,7 +154,7 @@
   *If everything worked, let's close access by password:*.  
   To do this, follow the familiar steps:  
   - Run the command  
-  ```shell
+  ```console
   nano /etc/ssh/sshd_config
   ```
   - In this file you need set:
@@ -165,7 +165,7 @@
   Pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter"
   - Restart the SSH service:
   
-  ```shell
+  ```console
   service ssh restart
   ```
 
@@ -174,33 +174,33 @@
 
 ### Step 4: Install Git
   Now we need to install Git, that's easy:  
-  ```shell
+  ```console
   apt install git-all -y
   ```
 
 ### Step 5: Install Nginx
   The next step is to install Nginx, our actions:  
   1. Install:
-  ```shell
+  ```console
   apt install nginx -y
   ```
   *We'll set it up later*
 
   2. Add Nginx to autoloader:
-  ```shell
+  ```console
   systemctl enable --now nginx
   ```
   3. To start Nginx after initializing the network connection, replace in the configuration file:  
-  ```shell
+  ```console
   nano /etc/systemd/system/multi-user.target.wants/nginx.service
   ```
   Change the "After=network.target remote-fs.target nss-lookup.target" line to "After=network-online.target remote-fs.target nss-lookup.target"  
   4. Restart Nginx:  
-  ```shell
+  ```console
   service nginx restart
   ```  
   5. Status check:  
-  ```shell
+  ```console
   service nginx status
   ```  
   *I think you can guess where to look. :)*
@@ -208,11 +208,11 @@
 ### Step 6: Install Certbot
   In order for us to be able to get a free SSL certificate for a domain name, we need to install Certbot:  
   1. Install Certbot:  
-  ```shell
+  ```console
   snap install --classic certbot
   ```  
   2. Check if it's installed Certbot:  
-  ```shell
+  ```console
   ln -s /snap/bin/certbot /usr/bin/certbot
   ```
   *command executed without error*
@@ -220,34 +220,34 @@
 ### Step 7: Installing Docker and Docker Compose
   1. **Set up Docker's Apt repository** [Detailed information](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)  
   - Step 7.1.1:  
-  ```shell
+  ```console
   apt install ca-certificates curl gnupg
   ```  
   - Step 7.1.2:  
-  ```shell
+  ```console
   install -m 0755 -d /etc/apt/keyrings
   ```  
   - Step 7.1.3:  
-  ```shell
+  ```console
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
   ```  
   - Step 7.1.4:  
-  ```shell
+  ```console
   chmod a+r /etc/apt/keyrings/docker.gpg
   ```  
   - And use this command:  
-  ```shell
+  ```console
   echo \
     "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```  
   - Step 7.1.5:  
-  ```shell
+  ```console
   apt update -y
   ```  
   2. **Install the Docker packages**  
-  ```shell
+  ```console
   apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
   ```
 
