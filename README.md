@@ -28,7 +28,7 @@
 - Ubuntu Server 22.04.3 [Download](https://releases.ubuntu.com/22.04/)
 - Nano                  [Website](https://www.nano-editor.org/)
 - Git                   [Website](https://git-scm.com/)
-- Nginx                 [Website](https://nginx.org/)
+- Nginx                 [Website](https://nginx.com/)
 - UFW Ubuntu            [Documentation](https://help.ubuntu.com/community/UFW)
 - SSH                   [wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
 - PuTTY                 [Download](https://www.putty.org/)
@@ -87,7 +87,7 @@
   *I prefer to use [**Nano**](https://www.nano-editor.org/)*
 
   **Let's install this text editor, run the command:**  
-  `apt install nano`
+  `apt install nano -y`
 
   **Once *Nano* is installed, we need to configure *OpenSSH*, instruction:**  
   - Run the command  
@@ -135,9 +135,23 @@
 
 ### Step 4: Install Git
   Now we need to install Git, that's easy:  
-  `apt install git-all`
+  `apt install git-all -y`
 
 ### Step 5: Install Nginx
+  The next step is to install Nginx, our actions:  
+  1. Install:  
+    `apt install nginx -y`  
+    *We'll set it up later*
+  2. Add nginx to autoloader:  
+    `systemctl enable --now nginx`
+  3. To start Nginx after initializing the network connection, replace in the configuration file:  
+    `nano /etc/systemd/system/multi-user.target.wants/nginx.service`  
+    Строку After=network.target remote-fs.target nss-lookup.target замение на After=network-online.target remote-fs.target nss-lookup.target  
+  4. Restart Nginx:  
+    `service nginx restart`  
+  5. Status check:  
+    `service nginx status`  
+    *I think you can guess where to look. :)*
 
 ### Step 6: Install Certbot
 
