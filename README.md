@@ -33,7 +33,7 @@
 - Nginx
 - UFW Ubuntu
 - SSH
-- PuTTY
+- PuTTY [Download](https://www.putty.org/)
 - Certbot for Ubuntu
 - Docker
 - MySQL
@@ -52,7 +52,7 @@ Minimum server system requirements:
 - Network 100Mb
   Usually hosting providers themselves install the operating system and give root access via SSH (We will consider the variant with already installed Ubuntu Server 22.04.3 minimalized + OpenSSH).
 #### SSH key pair creation
-  [Instruction](https://putty.org.ru/articles/putty-ssh-key-auth.html)
+  [Documentation](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
 
 ### Step 1: Connecting to the server
 
