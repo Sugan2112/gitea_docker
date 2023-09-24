@@ -56,15 +56,25 @@
 
 #### How to work with the console Ubuntu Server 22.04.3
   - To clear the console:  
-  `clear`
+  ```shell 
+  clear
+  ```
   - To navigate to a directory:  
-  `cd folder`  
+  ```shell
+  cd folder
+  ```  
   or to navigate from the current folder  
-  `cd folder/folder`  
+  ```shell
+  cd folder/folder
+  ```  
   or to route from the user's root folder  
-  `cd /folder/folder`  
+  ```shell
+  cd /folder/folder
+  ```  
   or to route from the server root folder  
-  `cd ~/folder/folder`
+  ```shell
+  cd ~/folder/folder
+  ```
 
 ### Step 1: Connecting to the server
 #### First connection
@@ -73,13 +83,17 @@
   *It is assumed that you know how to do this and have read it: [instruction](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
 
   *You should see it:*  
-  `root@your_server_name:~#`
+  ```console
+  root@your_server_name:~#
+  ```
 #### After executing [step 3](#step-3-configuring-ssh-access) of this instruction
   WARNING!!! Access to the server will be possible **only by SSH key**.
 
 ### Step 2: Upgrade packages
   Commands need to be executed:  
-  `apt update && apt upgrade -y`  
+  ```shell
+  apt update && apt upgrade -y
+  ```  
   *This should be done each time before installing packages*
 
 ### Step 3: Configuring SSH access
@@ -87,11 +101,15 @@
   *I prefer to use [**Nano**](https://www.nano-editor.org/)*
 
   **Let's install this text editor, run the command:**  
-  `apt install nano -y`
+  ```shell
+  apt install nano -y
+  ```
 
   **Once *Nano* is installed, we need to configure *OpenSSH*, instruction:**  
   - Run the command  
-  `nano /etc/ssh/sshd_config`
+  ```shell
+  nano /etc/ssh/sshd_config
+  ```
 
   - In this file you need to find the lines:  
   1. #Port 22 - for security reasons, change the port number, e.g. to 4646 and uncomment the line;
@@ -100,83 +118,136 @@
   4. You need to exit and save the changes by pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter".
 
   **Next, you need to add SSH to autoloader - this should be done with the command:**  
-  `systemctl enable --now ssh`
+  ```shell
+  systemctl enable --now ssh
+  ```
 
   **Next, you need to create a directory with access keys by executing the command:**  
-  `mkdir -p ~/.ssh`.
+  ```shell
+  mkdir -p ~/.ssh
+  ```
 
   **The next step is to write the public key to a file - this should be done with the command:**  
-  `echo your_public_key >> ~/.ssh/authorized_keys`  
+  ```shell
+  echo your_public_key >> ~/.ssh/authorized_keys
+  ```  
   **Example of a key: ssh-rsa AAAAAkkkkatstyasflRlkqksaJJAUSufisafiIISAFI1gGasfah123/asfasFSAfafsqUUv rsa-key-20230924*
 
   **Set permissions on the files in the ./ssh directory:**  
-  `chmod -R go= ~/.ssh`
+  ```shell
+  chmod -R go= ~/.ssh
+  ```
 
   **Change the owner and group for all files and subdirectories in the ./ssh directory to the system user "root" and its group "root":**  
-  `chown -R root:root ~/.ssh`
+  ```shell
+  chown -R root:root ~/.ssh
+  ```
 
   **Restart the SSH service**  
-  `service ssh restart`
+  ```shell
+  service ssh restart
+  ```
 
   **Try connecting to server via PuTTY using the key**  
   *If everything worked, let's close access by password:*.  
   To do this, follow the familiar steps:  
   - Run the command  
-  `nano /etc/ssh/sshd_config`
-  - In this file you need set:  
+  ```shell
+  nano /etc/ssh/sshd_config
+  ```
+  - In this file you need set:
+  ```file  
   PermitRootLogin to prohibit-password
+  ```
   - Exit and save the changes:  
   Pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter"
-  - Restart the SSH service:  
-  `service ssh restart`
+  - Restart the SSH service:
+  
+  ```shell
+  service ssh restart
+  ```
 
   *Now ALWAYS use only your ssh key to connect to the server*
   **Here we have configured ssh key access to the server and disabled password access**
 
 ### Step 4: Install Git
   Now we need to install Git, that's easy:  
-  `apt install git-all -y`
+  ```shell
+  apt install git-all -y
+  ```
 
 ### Step 5: Install Nginx
   The next step is to install Nginx, our actions:  
-  1. Install:  
-    `apt install nginx -y`  
-    *We'll set it up later*
-  2. Add Nginx to autoloader:  
-    `systemctl enable --now nginx`
+  1. Install:
+  ```shell
+  apt install nginx -y
+  ```
+  *We'll set it up later*
+
+  2. Add Nginx to autoloader:
+  ```shell
+  systemctl enable --now nginx
+  ```
   3. To start Nginx after initializing the network connection, replace in the configuration file:  
-    `nano /etc/systemd/system/multi-user.target.wants/nginx.service`  
-    Change the "After=network.target remote-fs.target nss-lookup.target" line to "After=network-online.target remote-fs.target nss-lookup.target"  
+  ```shell
+  nano /etc/systemd/system/multi-user.target.wants/nginx.service
+  ```
+  Change the "After=network.target remote-fs.target nss-lookup.target" line to "After=network-online.target remote-fs.target nss-lookup.target"  
   4. Restart Nginx:  
-    `service nginx restart`  
+  ```shell
+  service nginx restart
+  ```  
   5. Status check:  
-    `service nginx status`  
-    *I think you can guess where to look. :)*
+  ```shell
+  service nginx status
+  ```  
+  *I think you can guess where to look. :)*
 
 ### Step 6: Install Certbot
   In order for us to be able to get a free SSL certificate for a domain name, we need to install Certbot:  
   1. Install Certbot:  
-    `snap install --classic certbot`  
+  ```shell
+  snap install --classic certbot
+  ```  
   2. Check if it's installed Certbot:  
-    `ln -s /snap/bin/certbot /usr/bin/certbot`
+  ```shell
+  ln -s /snap/bin/certbot /usr/bin/certbot
+  ```
   *command executed without error*
 
 ### Step 7: Installing Docker and Docker Compose
   1. **Set up Docker's Apt repository** [Detailed information](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)  
-    - `apt install ca-certificates curl gnupg`  
-    - `install -m 0755 -d /etc/apt/keyrings`  
-    - `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`  
-    - `chmod a+r /etc/apt/keyrings/docker.gpg`  
-    - And use this command:  
-    ```console
-    
-    echo \ "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \ "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    ```  
-
-    - `apt-get update -y`  
+  - Step 7.1.1:  
+  ```shell
+  apt install ca-certificates curl gnupg
+  ```  
+  - Step 7.1.2:  
+  ```shell
+  install -m 0755 -d /etc/apt/keyrings
+  ```  
+  - Step 7.1.3:  
+  ```shell
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  ```  
+  - Step 7.1.4:  
+  ```shell
+  chmod a+r /etc/apt/keyrings/docker.gpg
+  ```  
+  - And use this command:  
+  ```shell
+  echo \
+    "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```  
+  - Step 7.1.5:  
+  ```shell
+  apt update -y
+  ```  
   2. **Install the Docker packages**  
-    - `apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y`
+  ```shell
+  apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+  ```
 
 ### Step 8: Installing and Configuring MySQL
 
