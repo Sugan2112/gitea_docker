@@ -195,7 +195,7 @@
   ```console
   apt install nginx -y
   ```
-  *We'll set it up later*
+  *We'll configurate it later*
 
   2. Add Nginx to autoloader:
   ```console
