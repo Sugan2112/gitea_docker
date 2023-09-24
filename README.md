@@ -206,7 +206,7 @@
   nano /etc/systemd/system/multi-user.target.wants/nginx.service
   ```
   Change the "After=network.target remote-fs.target nss-lookup.target" line to "After=network-online.target remote-fs.target nss-lookup.target"  
-  
+
   4. Restart Nginx:  
   ```console
   service nginx restart
@@ -350,21 +350,21 @@
   ```console
   cd /home/applications/gitea
   ```  
-  3. Create a docker-compose.yaml file to create and run Gitea in the docker container:  
-  ```console
-  nano docker-compose.yaml
-  ```
-  *Opening in the Nano text editor*  
-
-  4. Let's create a new user:  
+  3. Let's create a new user:  
   ```console
   adduser --system --shell /bin/bash --gecos 'Git Version Control' --group --disabled-password --home /home/gitea gitea
   ```  
   *REMEMBER UID and GID*  
 
+  4. Create a docker-compose.yaml file to create and run Gitea in the docker container:  
+  ```console
+  nano docker-compose.yaml
+  ```
+  *Opening in the Nano text editor*  
+
   5. A script needs to be created. Here is its code:  
   ```yaml
-  # Note: USER_UID and USER_GID from previous point
+  # Note: USER_UID and USER_GID from point 3
   # Note: GITEA__database__USER and GITEA__database__PASSWD from Step 8 point 4
   version: "3.1"
 
