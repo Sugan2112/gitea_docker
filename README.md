@@ -13,11 +13,10 @@
   - [Step 7: Installing and Configuring MySQL](#step-7-installing-and-configuring-mysql)
   - [Step 8: Installing Gitea](#step-8-installing-gitea)
   - [Step 9: Configuring Nginx](#step-9-configuring-nginx)
-  - [Step 10: Customizing Gitea](#step-10-customizing-gitea)
-  - [Step 11: Installing and configuring Act runner](#step-11-installing-and-configuring-act-runner)
-  - [Step 12: Installing and Configuring Ubuntu UFW](#step-12-installing-and-configuring-ubuntu-ufw)
-  - [Step 13: Restarting the server](#step-13-restarting-the-server)
-  - [Step 14: Checking](#step-14-checking)
+  - [Step 10: Installing and configuring Act runner](#step-10-installing-and-configuring-act-runner)
+  - [Step 11: Installing and Configuring Ubuntu UFW](#step-11-installing-and-configuring-ubuntu-ufw)
+  - [Step 12: Restarting the server](#step-12-restarting-the-server)
+  - [Step 13: Checking](#step-13-checking)
 - [Additionally](#additionally)
   - [Obtaining an SSL certificate](#obtaining-an-sll-certificate)
   - [Customizing the Gitea template](#customizing-the-gitea-template)
@@ -143,15 +142,13 @@
 
 ### Step 9: Configuring Nginx
 
-### Step 10: Customizing Gitea
+### Step 10: Installing and configuring Act runner
 
-### Step 11: Installing and configuring Act runner
+### Step 11: Installing and Configuring Ubuntu UFW
 
-### Step 12: Installing and Configuring Ubuntu UFW
+### Step 12. Restarting the server
 
-### Step 13. Restarting the server
-
-### Step 14. Checking
+### Step 13. Checking
 
 ## Additionally
 
