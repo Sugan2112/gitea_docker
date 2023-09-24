@@ -20,6 +20,8 @@
   - [Step 14: Checking](#step-14-checking)
 - [Additionally](#additionally)
   - [Obtaining an SSL certificate](#obtaining-an-sll-certificate)
+  - [Customizing the Gitea template](#customizing-the-gitea-template)
+- [Gitea Features](#gitea-features)
 
 ## Technologies and software used
 - Ubuntu Server 22.04.3 [Download](https://releases.ubuntu.com/22.04/)
@@ -126,6 +128,9 @@
   - Restart the SSH service:  
   `service ssh restart`
 
+  *Now ALWAYS use only your ssh key to connect to the server*
+  **Here we have configured ssh key access to the server and disabled password access**
+
 ### Step 4: Install Nginx
 
 ### Step 5: Install Certbot
@@ -151,3 +156,7 @@
 ## Additionally
 
 ### Obtaining an SSL certificate
+
+### Customizing the Gitea template
+
+## Gitea Features
