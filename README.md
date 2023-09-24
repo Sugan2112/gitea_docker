@@ -1,7 +1,7 @@
 # Installing and running Gitea 1.21 in Docker on Ubuntu Server 22.04.3
 
 ## List of contents
-- [List of technologies used](#list-of-technologies-used)
+- [Technologies and software used](#technologies-and-software-used)
 - [Detailed instructions on how to deploy to VPS/VDS server](#detailed-instructions-on-how-to-deploy-to-vps-vds-server)
   - [Step 0: Preparation](#step-0-preparation)
   - [Step 1: Connecting to the server](#step-1-connecting-to-the-server)
@@ -52,7 +52,7 @@
 
 #### How to work with the console Ubuntu Server 22.04.3
   - To clear the console:  
-  `clear`.
+  `clear`
   - To navigate to a directory:  
   `cd folder`  
   or to navigate from the current folder  
