@@ -8,16 +8,17 @@
   - [Step 1: Connecting to the server](#step-1-connecting-to-the-server)
   - [Step 2: Upgrade packages](#step-2-upgrade-packages)
   - [Step 3: Configuring SSH access](#step-3-configuring-ssh-access)
-  - [Step 4: Install Nginx](#step-4-install-nginx)
-  - [Step 5: Install Certbot](#step-5-install-certbot)
-  - [Step 6: Installing Docker](#step-6-installing-docker)
-  - [Step 7: Installing and Configuring MySQL](#step-7-installing-and-configuring-mysql)
-  - [Step 8: Installing Gitea](#step-8-installing-gitea)
-  - [Step 9: Configuring Nginx](#step-9-configuring-nginx)
-  - [Step 10: Installing and configuring Act runner](#step-10-installing-and-configuring-act-runner)
-  - [Step 11: Installing and Configuring Ubuntu UFW](#step-11-installing-and-configuring-ubuntu-ufw)
-  - [Step 12: Restarting the server](#step-12-restarting-the-server)
-  - [Step 13: Checking](#step-13-checking)
+  - [Step 4: Install Git](#step-4-install-git)
+  - [Step 5: Install Nginx](#step-5-install-nginx)
+  - [Step 6: Install Certbot](#step-6-install-certbot)
+  - [Step 7: Installing Docker](#step-7-installing-docker)
+  - [Step 8: Installing and Configuring MySQL](#step-8-installing-and-configuring-mysql)
+  - [Step 9: Installing Gitea](#step-9-installing-gitea)
+  - [Step 10: Configuring Nginx](#step-10-configuring-nginx)
+  - [Step 11: Installing and configuring Act runner](#step-11-installing-and-configuring-act-runner)
+  - [Step 12: Installing and Configuring Ubuntu UFW](#step-12-installing-and-configuring-ubuntu-ufw)
+  - [Step 13: Restarting the server](#step-13-restarting-the-server)
+  - [Step 14: Checking](#step-14-checking)
 - [Additionally](#additionally)
   - [Obtaining an SSL certificate](#obtaining-an-sll-certificate)
   - [Customizing the Gitea template](#customizing-the-gitea-template)
@@ -26,6 +27,7 @@
 ## Technologies and software used
 - Ubuntu Server 22.04.3 [Download](https://releases.ubuntu.com/22.04/)
 - Nano                  [Website](https://www.nano-editor.org/)
+- Git                   [Website](https://git-scm.com/)
 - Nginx                 [Website](https://nginx.org/)
 - UFW Ubuntu            [Documentation](https://help.ubuntu.com/community/UFW)
 - SSH                   [wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
@@ -73,7 +75,7 @@
   *You should see it:*  
   `root@your_server_name:~#`
 #### After executing [step 3](#step-3-configuring-ssh-access) of this instruction
-  Access to the server will be possible **only by SSH key**.
+  WARNING!!! Access to the server will be possible **only by SSH key**.
 
 ### Step 2: Upgrade packages
   Commands need to be executed:  
@@ -131,25 +133,29 @@
   *Now ALWAYS use only your ssh key to connect to the server*
   **Here we have configured ssh key access to the server and disabled password access**
 
-### Step 4: Install Nginx
+### Step 4: Install Git
+  Now we need to install Git, that's easy:  
+  `apt install git-all`
 
-### Step 5: Install Certbot
+### Step 5: Install Nginx
 
-### Step 6: Installing Docker
+### Step 6: Install Certbot
 
-### Step 7: Installing and Configuring MySQL
+### Step 7: Installing Docker
 
-### Step 8: Installing Gitea
+### Step 8: Installing and Configuring MySQL
 
-### Step 9: Configuring Nginx
+### Step 9: Installing Gitea
 
-### Step 10: Installing and configuring Act runner
+### Step 10: Configuring Nginx
 
-### Step 11: Installing and Configuring Ubuntu UFW
+### Step 11: Installing and configuring Act runner
 
-### Step 12. Restarting the server
+### Step 12: Installing and Configuring Ubuntu UFW
 
-### Step 13. Checking
+### Step 13. Restarting the server
+
+### Step 14. Checking
 
 ## Additionally
 
