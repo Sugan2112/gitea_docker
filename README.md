@@ -206,6 +206,7 @@
   nano /etc/systemd/system/multi-user.target.wants/nginx.service
   ```
   Change the "After=network.target remote-fs.target nss-lookup.target" line to "After=network-online.target remote-fs.target nss-lookup.target"  
+  
   4. Restart Nginx:  
   ```console
   service nginx restart
