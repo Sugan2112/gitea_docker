@@ -1,33 +1,33 @@
 # Installing and running Gitea 1.21 in Docker on Ubuntu Server 22.04.3
 
-# List of contents
-- [List of technologies used](#1)
-- [Detailed instructions on how to deploy to VPS/VDS server](#2)
-  - [Step 0: Preparation](#3)
-  - [Step 1: Connecting to the server](#4)
-  - [Step 2: Upgrade packages](#5)
-  - [Step 3: Configuring SSH access](#6)
-  - [Step 4: Install Nginx](#7)
-  - [Step 5: Install Certbot](#8)
-  - [Step 6: Installing Docker](#9)
-  - [Step 7: Installing and Configuring MySQL](#10)
-  - [Step 8: Installing Gitea](#11)
-  - [Step 9: Configuring Nginx](#12)
-  - [Step 10: Customizing Gitea](#13)
-  - [Step 11: Installing and configuring Act runner](#14)
-  - [Step 12: Installing and Configuring Ubuntu UFW](#15)
-  - [Step 13. Restarting the server](#16)
-  - [Step 14. Checking](#17)
-- [Additionally](#18)
-  - [Obtaining an SSL certificate](#19)
-# in progress ...
-- [Instructions for automatic deployment on a VPS/VDS server](#20)
-  - [Step 0: Preparation](#21)
-  - [Step 1: Connecting to the server](#22)
-  - [Step 2: Upgrade packages](#23)
+## List of contents
+- [List of technologies used](#list-of-technologies-used)
+- [Detailed instructions on how to deploy to VPS/VDS server](#detailed-instructions-on-how-to-deploy-to-vps-vds-server)
+  - [Step 0: Preparation](#step-0-preparation)
+  - [Step 1: Connecting to the server](#step-1-connecting-to-the-server)
+  - [Step 2: Upgrade packages](#step-2-upgrade-packages)
+  - [Step 3: Configuring SSH access](#step-3-configuring-ssh-access)
+  - [Step 4: Install Nginx](#step-4-install-nginx)
+  - [Step 5: Install Certbot](#step-5-install-certbot)
+  - [Step 6: Installing Docker](#step-6-installing-docker)
+  - [Step 7: Installing and Configuring MySQL](#step-7-installing-and-configuring-mysql)
+  - [Step 8: Installing Gitea](#step-8-installing-gitea)
+  - [Step 9: Configuring Nginx](#step-9-configuring-nginx)
+  - [Step 10: Customizing Gitea](#step-10-customizing-gitea)
+  - [Step 11: Installing and configuring Act runner](#step-11-installing-and-configuring-act-runner)
+  - [Step 12: Installing and Configuring Ubuntu UFW](#step-12-installing-and-configuring-ubuntu-ufw)
+  - [Step 13: Restarting the server](#step-13-restarting-the-server)
+  - [Step 14: Checking](#step-14-checking)
+- [Additionally](#additionally)
+  - [Obtaining an SSL certificate](#obtaining-an-sll-certificate)
+## in progress ...
+- [Instructions for automatic deployment on a VPS/VDS server](#instructions-for-automatic-deployment-on-a-vps-vds-server)
+  - [Step 0: Preparation](#step-0-preparation)
+  - [Step 1: Connecting to the server](#step-1-connecting-to-the-server)
+  - [Step 2: Upgrade packages](#step-2-upgrade-packages)
 
 
-# <a name="1">List of technologies used</a>
+## List of technologies used
 - Ubuntu Server
 - Nginx
 - UFW Ubuntu
@@ -39,36 +39,38 @@
 - Gitea 1.21
 - Act runner 0.2.5
 
-# <a name="2">Detailed instructions on how to deposit to VPS/VDS server</a>
-## <a name="3">Step 0: Preparation</a>
+## Detailed instructions on how to deposit to VPS/VDS server
 
-## <a name="4">Step 1: Connecting to the server</a>
+### Step 0: Preparation
 
-## <a name="5">Step 2: Upgrade packages</a>
+### Step 1: Connecting to the server
 
-## <a name="6">Step 3: Configuring SSH access</a>
+### Step 2: Upgrade packages
 
-## <a name="7">Step 4: Install Nginx</a>
+### Step 3: Configuring SSH access
 
-## <a name="8">Step 5: Install Certbot</a>
+### Step 4: Install Nginx
 
-## <a name="9">Step 6: Installing Docker</a>
+### Step 5: Install Certbot
 
-## <a name="10">Step 7: Installing and Configuring MySQL</a>
+### Step 6: Installing Docker
 
-## <a name="11">Step 8: Installing Gitea</a>
+### Step 7: Installing and Configuring MySQL
 
-## <a name="12">Step 9: Configuring Nginx</a>
+### Step 8: Installing Gitea
 
-## <a name="13">Step 10: Customizing Gitea</a>
+### Step 9: Configuring Nginx
 
-## <a name="14">Step 11: Installing and configuring Act runner</a>
+### Step 10: Customizing Gitea
 
-## <a name="15">Step 12: Installing and Configuring Ubuntu UFW</a>
+### Step 11: Installing and configuring Act runner
 
-## <a name="16">Step 13. Restarting the server</a>
+### Step 12: Installing and Configuring Ubuntu UFW
 
-## <a name="17">Step 14. Checking</a>
+### Step 13. Restarting the server
 
-# <a name="18">Additionally</a>
-## <a name="19">Obtaining an SSL certificate</a>
+### Step 14. Checking
+
+## Additionally
+
+### Obtaining an SSL certificate
