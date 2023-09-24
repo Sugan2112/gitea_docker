@@ -11,7 +11,7 @@
   - [Step 4: Install Git](#step-4-install-git)
   - [Step 5: Install Nginx](#step-5-install-nginx)
   - [Step 6: Install Certbot](#step-6-install-certbot)
-  - [Step 7: Installing Docker](#step-7-installing-docker)
+  - [Step 7: Installing Docker and Docker Compose](#step-7-installing-docker-and-docker-compose)
   - [Step 8: Installing and Configuring MySQL](#step-8-installing-and-configuring-mysql)
   - [Step 9: Installing Gitea](#step-9-installing-gitea)
   - [Step 10: Configuring Nginx](#step-10-configuring-nginx)
@@ -142,11 +142,11 @@
   1. Install:  
     `apt install nginx -y`  
     *We'll set it up later*
-  2. Add nginx to autoloader:  
+  2. Add Nginx to autoloader:  
     `systemctl enable --now nginx`
   3. To start Nginx after initializing the network connection, replace in the configuration file:  
     `nano /etc/systemd/system/multi-user.target.wants/nginx.service`  
-    Строку After=network.target remote-fs.target nss-lookup.target замение на After=network-online.target remote-fs.target nss-lookup.target  
+    Change the "After=network.target remote-fs.target nss-lookup.target" line to "After=network-online.target remote-fs.target nss-lookup.target"  
   4. Restart Nginx:  
     `service nginx restart`  
   5. Status check:  
@@ -154,8 +154,23 @@
     *I think you can guess where to look. :)*
 
 ### Step 6: Install Certbot
+  In order for us to be able to get a free SSL certificate for a domain name, we need to install Certbot:  
+  1. Install Certbot:  
+    `snap install --classic certbot`  
+  2. Check if it's installed Certbot:  
+    `ln -s /snap/bin/certbot /usr/bin/certbot`
+  *command executed without error*
 
-### Step 7: Installing Docker
+### Step 7: Installing Docker and Docker Compose
+  1. **Set up Docker's Apt repository** [Detailed information](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+    - `apt install ca-certificates curl gnupg`
+    - `install -m 0755 -d /etc/apt/keyrings`
+    - `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`
+    - `chmod a+r /etc/apt/keyrings/docker.gpg`
+    - `echo \ "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \ "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
+    - `apt-get update -y`
+  2. **Install the Docker packages**
+    - `apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y`
 
 ### Step 8: Installing and Configuring MySQL
 
