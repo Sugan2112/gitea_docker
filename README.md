@@ -166,10 +166,8 @@
   ```console
   nano /etc/ssh/sshd_config
   ```
-  - In this file you need set:
-  ```file  
+  - In this file you need set:  
   PermitRootLogin to prohibit-password
-  ```
   - Exit and save the changes:  
   Pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter"
   - Restart the SSH service:
