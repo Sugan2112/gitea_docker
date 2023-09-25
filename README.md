@@ -20,7 +20,7 @@
   - [Step 13: Restarting the server](#step-13-restarting-the-server)
   - [Step 14: Checking](#step-14-checking)
 - [Additionally](#additionally)
-  - [Obtaining an SSL certificate](#obtaining-an-sll-certificate)
+  - [Obtaining an SSL certificate](#obtaining-an-ssl-certificate)
   - [Customizing the Gitea template](#customizing-the-gitea-template)
 - [Gitea Features](#gitea-features)
 
@@ -328,6 +328,9 @@
         bash -c "mysql -h gitea_db_mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SET old_passwords=0; CREATE DATABASE giteadb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON giteadb.* TO gitea; FLUSH PRIVILEGES;'"
   ```  
 
+  - Exit and save the changes:  
+  Pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter"  
+
   5. Let's get our container up and running:  
   ```console
   docker-compose up -d
@@ -399,6 +402,9 @@
         - gitea_db_mysql
   ```  
 
+  - Exit and save the changes:  
+  Pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter"  
+
   5. Let's get our container up and running:  
   ```console
   docker-compose up -d
@@ -411,6 +417,42 @@
   *I think you'll know where to look :)*  
 
 ### Step 10: Configuring Nginx
+  1. Now we need to specify in the Nginx settings that the address of our Gitea:
+  ```console
+  nano /etc/nginx/sites-available/default
+  ```
+  *Opening in the Nano text editor*  
+
+  2. Нужно добавить такие строки:  
+
+  ```bash
+  server {
+    listen 3000;
+    listen [::]:3000;    
+
+    location / {
+        client_max_body_size 512M;
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+  }
+  ```  
+
+  3. Exit and save the changes:  
+  Pressing the keyboard shortcut "Ctrl + x" press "y" and "Enter"  
+
+  4. Restart Nginx:  
+  ```console
+  service nginx restart
+  ```  
+  5. Status check:  
+  ```console
+  service nginx status
+  ```  
+  *I think you can guess where to look. :)*
 
 ### Step 11: Installing and configuring Act runner
 
