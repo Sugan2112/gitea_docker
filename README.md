@@ -453,7 +453,7 @@
   *I think you can guess where to look. :)*  
 
   **You now have the ability to log into your Gitea:**  
-  **Open in your browser *http://your_server_ip:3000***
+  **Open in your browser *http://your_server_ip:3000***  
   *Configure Gitea in the web interface*
 
 ### Step 11. Restarting the server
