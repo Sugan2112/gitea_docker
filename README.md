@@ -15,14 +15,12 @@
   - [Step 8: Installing and Configuring MySQL](#step-8-installing-and-configuring-mysql)
   - [Step 9: Installing Gitea](#step-9-installing-gitea)
   - [Step 10: Configuring Nginx](#step-10-configuring-nginx)
-  - [Step 11: Installing and configuring Act runner](#step-11-installing-and-configuring-act-runner)
-  - [Step 12: Installing and Configuring Ubuntu UFW](#step-12-installing-and-configuring-ubuntu-ufw)
-  - [Step 13: Restarting the server](#step-13-restarting-the-server)
-  - [Step 14: Checking](#step-14-checking)
+  - [Step 11: Restarting the server](#step-13-restarting-the-server)
+  - [Step 12: Checking](#step-14-checking)
 - [Additionally](#additionally)
+  - [Installing and configuring Act runner](#installing-and-configuring-act-runner)
+  - [Installing and Configuring Ubuntu UFW](#installing-and-configuring-ubuntu-ufw)
   - [Obtaining an SSL certificate](#obtaining-an-ssl-certificate)
-  - [Customizing the Gitea template](#customizing-the-gitea-template)
-- [Gitea Features](#gitea-features)
 
 ## Technologies and software used
 | Technologie or software name |     Link      |
@@ -452,20 +450,28 @@
   ```console
   service nginx status
   ```  
-  *I think you can guess where to look. :)*
+  *I think you can guess where to look. :)*  
 
-### Step 11: Installing and configuring Act runner
+  **You now have the ability to log into your Gitea:**  
+  **Open in your browser *http://your_server_ip:3000***
+  *Configure Gitea in the web interface*
 
-### Step 12: Installing and Configuring Ubuntu UFW
+### Step 11. Restarting the server
+  ```console
+  shutdown -r now
+  ```  
+  *After restarting the server, you can proceed to the next step*
 
-### Step 13. Restarting the server
-
-### Step 14. Checking
+### Step 12. Checking
+  **Open in your browser *http://your_server_ip:3000***
 
 ## Additionally
 
+### Installing and configuring Act runner
+  ***Creating instruction in the process ...***
+
+### Installing and Configuring Ubuntu UFW
+  ***Creating instruction in the process ...***
+
 ### Obtaining an SSL certificate
-
-### Customizing the Gitea template
-
-## Gitea Features
+  ***Creating instruction in the process ...***
