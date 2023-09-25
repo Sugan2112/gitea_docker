@@ -387,7 +387,7 @@
       networks:
         - gitea
       volumes:
-        - ./home/applications/giteadb/volume:/data
+        - ./home/applications/gitea/volume:/data
         - /var/gitea/.ssh/:/data/gitea/.ssh
         - /etc/timezone:/etc/timezone:ro
         - /etc/localtime:/etc/localtime:ro
