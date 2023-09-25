@@ -343,7 +343,7 @@
 ### Step 9: Installing Gitea
   1. Let's start creating the directory system:  
   ```console
-  mkdir /home/applications && mkdir /home/applications/gitea && /home/applications/giteadb/volume
+  mkdir /home/applications && mkdir /home/applications/gitea && /home/applications/gitea/volume
   ```  
   2. Let's go to the created directory:
   ```console
