@@ -423,7 +423,7 @@
   ```
   *Opening in the Nano text editor*  
 
-  2. Нужно добавить такие строки:  
+  2. You need to add this lines:  
 
   ```bash
   server {
