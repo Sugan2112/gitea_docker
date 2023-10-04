@@ -8,14 +8,14 @@ services:
       MYSQL_ROOT_PASSWORD: mKGktR4H6Tty
       MYSQL_DATABASE: giteadb
       MYSQL_USER: gitea
-      MYSQL_PASSWORD: mKGktR4H6Tty    
+      MYSQL_PASSWORD: mKGktR4H6Tty
     restart: always
     ports:
       - "3310:3310"
     networks:
       - gitea
     volumes:
-      - /home/apps/gitea_docker/volumes/mysql:/var/lib/mysql
+      - ./home/apps/git/gitea_docker/volumes/mysql:/var/lib/mysql
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
 
   gitea:
@@ -36,8 +36,8 @@ services:
       - "3000:3000"
       - "2222:22"
     volumes:
-      - ./home/apps/gitea_docker/volumes/gitea:/data
-      - /home/apps/gitea_docker/.ssh:/data/gitea/.ssh
+      - ./home/apps/git/gitea_docker/volumes/gitea:/data
+      - ./home/apps/git/gitea_docker/.ssh:/data/gitea/.ssh
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     depends_on:
