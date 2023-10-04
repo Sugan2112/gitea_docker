@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+  gitea_db_mysql:
+    image: mysql:8.0
+    container_name: gitea_db_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mKGktR4H6Tty
+      MYSQL_DATABASE: giteadb
+      MYSQL_USER: gitea
+      MYSQL_PASSWORD: mKGktR4H6Tty    
+    restart: always
+    ports:
+      - "3310:3310"
+    networks:
+      - gitea
+    volumes:
+      - /home/apps/gitea_docker/volumes/mysql:/var/lib/mysql
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+
+  gitea:
+    image: gitea/gitea:1.20.4
+    container_name: gitea
+    environment:
+      - USER_UID=115
+      - USER_GID=121
+      - GITEA__database__DB_TYPE=mysql
+      - GITEA__database__HOST=gitea_db_mysql:3310
+      - GITEA__database__NAME=giteadb
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=mKGktR4H6Tty
+    restart: always
+    networks:
+      - gitea
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    volumes:
+      - ./home/apps/gitea_docker/volumes/gitea:/data
+      - /home/apps/gitea_docker/.ssh:/data/gitea/.ssh
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - gitea_db_mysql
+
+networks:
+  gitea:
+    external: false
